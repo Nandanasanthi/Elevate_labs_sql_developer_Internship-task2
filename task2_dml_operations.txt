@@ -1,0 +1,42 @@
+
+INSERT INTO Member (name, email, phone) VALUES
+('John Doe', 'john@example.com', '1234567890'),
+('Jane Smith', 'jane@example.com', NULL),   -- NULL phone
+('Alice Johnson', NULL, '9876543210');       -- NULL email
+
+
+INSERT INTO Book (title, author, genre, available) VALUES
+('The Alchemist', 'Paulo Coelho', 'Fiction', TRUE),
+('DBMS Concepts', 'Korth', 'Education', TRUE),
+('Networking Basics', 'Andrew Tanenbaum', 'Education', NULL);   -- NULL availability
+
+
+INSERT INTO Borrow (member_id, book_id, borrow_date, return_date) VALUES
+(1, 1, '2025-06-24', NULL),
+(2, 2, '2025-06-25', '2025-07-05');
+
+
+SELECT * FROM Member WHERE email IS NULL;
+
+SELECT * FROM Book WHERE available IS NULL;
+
+
+UPDATE Book SET available = FALSE WHERE book_id = 1;
+
+
+UPDATE Member SET phone = '9999999999' WHERE member_id = 2;
+
+
+UPDATE Book SET genre = 'Self Help', author = 'P. Coelho' WHERE book_id = 1;
+
+DELETE FROM Borrow WHERE borrow_id = 2;
+
+
+DELETE FROM Member WHERE member_id = 1;
+
+
+INSERT INTO Member (name, email) VALUES ('Robert', 'robert@example.com');
+
+
+INSERT INTO Book (title, author, genre, available)
+SELECT 'New Book', author, 'Fiction', TRUE FROM Book WHERE book_id = 1;
